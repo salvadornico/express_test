@@ -2,9 +2,27 @@ doctype html
 html
 	head
 		title Knowledge Base
+		link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css")
+		link(rel="stylesheet" href="/css/style.css")
 	body
-		block content
-		br
-		hr
-		footer
-			p Copyright &copy; 2017
+		nav.navbar.navbar-expand-md.navbar-dark.bg-dark
+			a.navbar-brand(href='/') Knowledge Base
+			button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarsExampleDefault', aria-controls='navbarsExampleDefault', aria-expanded='false', aria-label='Toggle navigation')
+				span.navbar-toggler-icon
+			#navbarsExampleDefault.collapse.navbar-collapse
+				ul.navbar-nav.mr-auto
+					li.nav-item
+						a.nav-link(href='/') Home
+					li.nav-item
+						a.nav-link(href='/article/add') Add Article
+					li.nav-item.dropdown
+		.container
+			block content
+			br
+			hr
+			footer
+				p Copyright &copy; 2017
+		script(src="https://code.jquery.com/jquery-3.2.1.slim.min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js")
+		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js")
+		script(src="/js/main.js")

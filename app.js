@@ -9,7 +9,7 @@ db.once("open", () => {
 	console.log("Connected to MongoDB")
 })
 db.on("error", err => {
-	alert(err)
+	console.log(err)
 })
 
 const app = express()
@@ -21,6 +21,8 @@ app.set("view engine", "pug")
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+
+app.use(express.static(path.join(__dirname, "public")))
 
 app.get("/", (req, res) => {
 	Article.find({}, (err, articles) => {
@@ -34,13 +36,13 @@ app.get("/", (req, res) => {
 	})
 })
 
-app.get("/articles/add", (req, res) => {
+app.get("/article/add", (req, res) => {
 	res.render("add_article", {
 		title: "Add Article"
 	})
 })
 
-app.post("/articles/add", (req, res) => {
+app.post("/article/add", (req, res) => {
 	let article = new Article()
 	article.title = req.body.title
 	article.author = req.body.author
@@ -52,6 +54,52 @@ app.post("/articles/add", (req, res) => {
 		} else {
 			res.redirect("/")
 		}
+	})
+})
+
+app.get("/article/:id", (req, res) => {
+	Article.findById(req.params.id, (err, article) => {
+		res.render("article", {
+			article: article
+		})
+	})
+})
+
+app.get("/article/edit/:id", (req, res) => {
+	Article.findById(req.params.id, (err, article) => {
+		res.render("edit_article", {
+			article: article
+		})
+	})
+})
+
+app.post("/article/edit/:id", (req, res) => {
+	let article = {}
+	article.title = req.body.title
+	article.author = req.body.author
+	article.body = req.body.body
+
+	let query = { _id: req.params.id }
+
+	Article.update(query, article, err => {
+		if (err) {
+			console.log(err)
+		} else {
+			res.redirect("/")
+		}
+	})
+})
+
+app.delete("/article/:id", (req, res) => {
+	let query = { _id: req.params.id }
+
+	Article.remove(query, err => {
+		if (err) {
+			console.log(err)
+		} else {
+			res.redirect("/")
+		}
+		res.send("Success")
 	})
 })
 

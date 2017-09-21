@@ -10,21 +10,17 @@
 	},
 	"plugins": ["prettier"],
 	"rules": {
-		"prettier/prettier": "error",
-		"indent": ["error", "tab"],
+		"prettier/prettier": [
+			"error",
+			{
+				"useTabs": true,
+				"semi": false,
+				"trailingComma": "es5",
+				"bracketSpacing": true
+			}
+		],
 		"linebreak-style": ["error", "unix"],
-		"quotes": ["error", "double"],
-		"semi": ["error", "never"],
 		"no-undef": "off",
 		"no-console": "off"
-	},
-	"prettier/prettier": [
-		"error",
-		{
-			"useTabs": true,
-			"semi": false,
-			"trailingComma": "es5",
-			"bracketSpacing": true
-		}
-	]
+	}
 }
