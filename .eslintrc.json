@@ -1,31 +1,30 @@
 {
-    "env": {
-        "browser": true,
-        "es6": true,
-        "node": true
-    },
-    "extends": "eslint:recommended",
-    "parserOptions": {
-        "sourceType": "module"
-    },
-    "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
-        "quotes": [
-            "error",
-            "double"
-        ],
-        "semi": [
-            "error",
-            "never"
-        ],
+	"env": {
+		"browser": true,
+		"es6": true,
+		"node": true
+	},
+	"extends": ["eslint:recommended", "prettier"],
+	"parserOptions": {
+		"sourceType": "module"
+	},
+	"plugins": ["prettier"],
+	"rules": {
+		"prettier/prettier": "error",
+		"indent": ["error", "tab"],
+		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "double"],
+		"semi": ["error", "never"],
 		"no-undef": "off",
 		"no-console": "off"
-    }
+	},
+	"prettier/prettier": [
+		"error",
+		{
+			"useTabs": true,
+			"semi": false,
+			"trailingComma": "es5",
+			"bracketSpacing": true
+		}
+	]
 }

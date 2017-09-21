@@ -15,4 +15,4 @@ const articleSchema = mongoose.Schema({
 	}
 })
 
-const Article = module.exports = mongoose.model("Article", articleSchema)
+const Article = (module.exports = mongoose.model("Article", articleSchema)) // eslint-disable-line no-unused-vars
