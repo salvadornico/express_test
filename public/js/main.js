@@ -1,15 +1,15 @@
 $(document).ready(() => {
-	$(".delete-article").on("click", e => {
+	$(`.delete-article`).on(`click`, e => {
 		const $target = $(e.target)
-		const id = $target.attr("data-id")
+		const id = $target.attr(`data-id`)
 
 		$.ajax({
-			method: "DELETE",
+			method: `DELETE`,
 			url: `/article/${id}`,
 			success: response => {
-				alert("Deleting article")
+				alert(`Deleting article`)
 				console.log(response)
-				window.location.href = "/"
+				window.location.href = `/`
 			},
 			error: err => {
 				console.log(err)

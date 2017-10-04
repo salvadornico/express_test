@@ -20,6 +20,7 @@
 			}
 		],
 		"linebreak-style": ["error", "unix"],
+		"quotes": ["error", "backtick"],
 		"no-undef": "off",
 		"no-console": "off"
 	}
